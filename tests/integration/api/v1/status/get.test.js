@@ -13,4 +13,6 @@ test("GET api/v1/status deve retornar 200", async () => {
   expect(db.version).toEqual("17.6");
   expect(db.max_conns).toEqual(100);
   expect(db.active_conns).toEqual(1);
+  expect(db.used_conns).toBeLessThan(3);
+  console.log(db.used_conns);
 });
