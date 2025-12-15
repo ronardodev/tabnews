@@ -13,6 +13,8 @@ export default async function migrations(request, response) {
     migrationsTable: "pgmigrations",
   };
 
+  console.log("teste staging");
+
   if (request.method === "GET") {
     const penddingMigrations = await runner(options);
     await dbClient.end();
