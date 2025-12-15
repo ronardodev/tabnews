@@ -14,6 +14,7 @@ async function status(request, response) {
   response.status(200).json({
     updated_at: updatedAt,
     database: {
+      host: process.env.POSTGRES_HOST.substring(0, 5) + "...",
       version: dbVersion.rows[0].server_version,
       max_conns: parseInt(dbMaxConns.rows[0].max_connections),
       active_conns: parseInt(dbActiveConns.rows[0].active_conns),

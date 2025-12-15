@@ -9,6 +9,7 @@ test("GET api/v1/status deve retornar 200", async () => {
   expect(body.updated_at).toEqual(parsedDate);
 
   const db = body.database;
+  expect(db.host).toEqual("local...");
   expect(db.version).toEqual("17.6");
   expect(db.max_conns).toEqual(100);
   expect(db.active_conns).toEqual(1);
