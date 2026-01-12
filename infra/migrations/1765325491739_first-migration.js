@@ -1,6 +1,4 @@
-// export const shorthands = undefined;
-// export const up = (pgm) => {};
-// export const down = (pgm) => {};
+/* eslint-disable no-unused-vars */
 
 exports.shorthands = undefined;
 exports.up = (pgm) => {};

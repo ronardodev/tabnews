@@ -27,7 +27,12 @@ async function getNewClient() {
   return client;
 }
 
-export default { query, getNewClient };
+const database = {
+  query,
+  getNewClient,
+};
+
+export default database;
 
 function getSslValue() {
   // somente como exemplo para DigitalOcean (não implementado)

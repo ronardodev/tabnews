@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 function sleep(seconds) {
   seconds = process.argv[2];
   console.log("sleep-on ", seconds);
