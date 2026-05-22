@@ -4,20 +4,24 @@ beforeAll(async () => {
   await orchestrator.waitForAllServices();
 });
 
-test("GET api/v1/status deve retornar 200", async () => {
-  const response = await fetch("http://localhost:3000/api/v1/status");
-  expect(response.status).toBe(200);
+describe("GET api/v1/status", () => {
+  describe("Anonymouos user", () => {
+    test("Retrieving current system status", async () => {
+      const response = await fetch("http://localhost:3000/api/v1/status");
+      expect(response.status).toBe(200);
 
-  const body = await response.json();
+      const body = await response.json();
 
-  expect(body.updated_at).toBeDefined();
-  const parsedDate = new Date(body.updated_at).toISOString();
-  expect(body.updated_at).toEqual(parsedDate);
+      expect(body.updated_at).toBeDefined();
+      const parsedDate = new Date(body.updated_at).toISOString();
+      expect(body.updated_at).toEqual(parsedDate);
 
-  const db = body.database;
-  expect(db.host).toEqual("localho...");
-  expect(db.version).toMatch(/^17\./);
-  expect(db.max_conns).toBeLessThan(200);
-  expect(db.active_conns).toEqual(1);
-  expect(db.used_conns).toBeLessThan(3);
+      const db = body.database;
+      expect(db.host).toEqual("localho...");
+      expect(db.version).toMatch(/^17\./);
+      expect(db.max_conns).toBeLessThan(200);
+      expect(db.active_conns).toEqual(1);
+      expect(db.used_conns).toBeLessThan(3);
+    });
+  });
 });
